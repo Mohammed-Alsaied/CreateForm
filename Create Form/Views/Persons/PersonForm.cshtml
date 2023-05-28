@@ -1,0 +1,54 @@
+﻿@using Models;
+@model PersonViewModel
+@inject IEnumerable<Person> person
+
+
+@{
+    ViewData["Title"] = "Create Person";
+}
+<h2>@(Model.Id >0 ?"Edit" : "Create") Person</h2>
+<hr />
+    <div class="registration-form">
+            <form method="Post" asp-action="@(Model.Id >0 ? "Edit" : "Create")">
+                <input type="hidden" asp-for="Id" />
+            <div class="form-icon">
+                <span><i class="icon icon-user"></i></span>
+            </div>
+                 <div class="form-group">
+                    <input type="text"  asp-for="Name" class="form-control item" maxlength="50" id="username" placeholder="Name">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                     <input type="number"  asp-for="Age" class="form-control item" min="20" maxlength="2" id="" placeholder="Age">
+                    <span asp-validation-for="Age" class="text-danger"></span>
+                </div>
+                 <div class="form-group">
+                    <input type="email" asp-for="Email" class="form-control item" id="email" placeholder="Email">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                     <input type="text"  asp-for="Phone"class="form-control item"  maxlength="11" id="" placeholder="Phone">
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+                 <div class="form-group">
+                     <input type="text"  asp-for="Country"class="form-control item" maxlength="20" id="" placeholder="Country">
+                    <span asp-validation-for="Country" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="text"  asp-for="City"class="form-control item" id="" maxlength="20" placeholder="City">
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="text"   asp-for="Street"class="form-control item" id="" maxlength="20" placeholder="Street">
+                    <span asp-validation-for="Street" class="text-danger"></span>
+                </div>
+           
+                <div class="form-group">
+                    <button type="submit" class="btn btn-block create-account">Create</button>
+                </div>    
+            </form>
+    </div>
+
+    
+
+

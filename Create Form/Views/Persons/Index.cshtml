@@ -1,0 +1,73 @@
+﻿@using Entities;
+@model IEnumerable<Person>
+@{
+    ViewData["Title"] = "Persons";
+}
+<h2>
+    <i class="bi bi-shop"></i>
+    Persons
+</h2>
+<hr />
+<a class="btn btn-primary" asp-action="Create"><i class="bi bi-plus"></i>
+     Add</a>
+<div class="mt-4 table-responsive" >
+    @if (Model == null)
+    {
+        <div class="alert alert-warning" role="alert">
+            <i class="bi bi-exclamation-triangle"></i>
+         No Persons Found!
+        </div>
+    }
+    else
+    {
+        <table id="datatable" class="table table-hover table-striped" cellspacing="0" width="100%">
+            <thead>
+                <tr class="text-center">
+                    <th class="th-sm text-center">Name</th>
+                    <th class="th-sm text-center">Age</th>
+                    <th class="th-sm text-center">Email</th>
+                    <th class="th-sm text-center">Phone</th>
+                    <th class="th-sm text-center">Country</th>
+                    <th class="th-sm text-center">City</th>
+                    <th class="th-sm text-center">Street</th>
+                    <th class="text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var person in Model)
+                {
+                    <tr class="text-center tbl">
+                        <td>@person.Name</td>
+                        <td>@person.Age</td>
+                        <td>@person.Email</td>
+                        <td>@person.Phone</td>
+                        <td>@person.Country</td>
+                        <td>@person.City</td>
+                        <td>@person.Street</td>
+                            <td class="">
+                                <a asp-action="Edit" title="Edit" asp-route-id="@person.Id" class="btn btn-outline-primary card-link"><i class="bi bi-pencil"></i>
+                                </a>
+                                <a href="javascript:;" title="Delete" class="btn btn-danger js-delete-persons" data-id="@person.Id">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                }
+                </tbody>
+            <tfoot>
+               <tr class="text-center">
+                    <th class="th-sm text-center">Name</th>
+                    <th class="th-sm text-center">Age</th>
+                    <th class="th-sm text-center">Email</th>
+                    <th class="th-sm text-center">Phone</th>
+                    <th class="th-sm text-center">Country</th>
+                    <th class="th-sm text-center">City</th>
+                    <th class="th-sm text-center">Street</th>
+                    <th class="th-sm text-center">Actions</th>
+                </tr>
+            </tfoot>
+            </table>
+    }
+</div>
+
+
